@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="productItem"
+            type="com.example.ecommerceapp.data.remote.response.ProductItem" />
+
+        <variable
+            name="onItemClickListener"
+            type="com.example.ecommerceapp.util.extension.OnItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        app:cardCornerRadius="16dp"
+        android:onClick="@{() -> onItemClickListener.onClick(productItem)}"
+        app:cardUseCompatPadding="true"
+        android:elevation="2dp"
+        android:background="@color/product_item_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clProductImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/product_item_background">
+
+                <ImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="164dp"
+                    android:layout_height="164dp"
+                    load_image="@{productItem.productImage.toString()}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/clProductImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{productItem.productName.toString()}"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvProductType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{productItem.type.toString()}"
+                    android:textSize="18sp"
+                    android:textColor="@color/yellow"
+                    app:layout_constraintTop_toBottomOf="@id/tvProductName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/round_rectangle"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:paddingStart="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvProductOldPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    setPrice="@{productItem.oldPrice.toString()}"
+                    android:textSize="16sp"
+                    strikeThrough="@{true}"
+                    android:textColor="@color/gray"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintBottom_toBottomOf="@id/tvProductNewPrice"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvProductType"
+                    app:layout_constraintStart_toStartOf="@id/tvProductType" />
+
+                <TextView
+                    android:id="@+id/tvProductNewPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    setPrice="@{productItem.newPrice.toString()}"
+                    android:textColor="@color/black_secondary"
+                    android:textSize="20sp"
+                    strikeThrough="@{false}"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@id/tvProductOldPrice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvProductOldPrice" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
