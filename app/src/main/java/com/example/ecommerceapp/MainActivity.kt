@@ -1,11 +1,8 @@
 package com.example.ecommerceapp
 
-import android.R
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import com.example.ecommerceapp.data.local.ClientPreferences
 import com.example.ecommerceapp.databinding.ActivityMainBinding
 import com.example.ecommerceapp.util.extension.snack
